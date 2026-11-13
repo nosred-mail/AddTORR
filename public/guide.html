@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#161616">
+<title>AddTORR — Guia de Variáveis</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/guide.css">
+<script src="/lucide.min.js"></script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <a class="brand" href="/" aria-label="AddTORR — início">
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 150" class="logo-svg" role="img" aria-label="AddTORR">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #1dff9a;
+              }
+            </style>
+          </defs>
+          <g>
+            <polygon class="cls-1"
+              points="352.48 119.85 366.09 119.85 366.09 146.72 370.81 146.72 370.81 119.85 384.65 119.85 384.65 115.97 352.48 115.97 352.48 119.85" />
+            <path class="cls-1"
+              d="M421.53,119.68c-1.71-1.36-3.77-2.42-6.25-3.18-2.36-.71-4.95-1.06-7.78-1.06s-5.42.35-7.78,1.06c-2.36.71-4.42,1.83-6.13,3.18s-3.18,3.06-4.18,4.95c-1,2-1.47,4.18-1.47,6.6s.47,4.6,1.47,6.48c1,2,2.36,3.59,4.07,5.07,1.71,1.36,3.77,2.42,6.13,3.24,2.36.71,4.95,1.18,7.78,1.18s5.42-.35,7.78-1.18c2.36-.71,4.42-1.83,6.13-3.24s3.06-3.06,4.07-5.07c1-2,1.47-4.18,1.47-6.48s-.53-4.6-1.47-6.48c-1-1.89-2.36-3.59-4.07-4.95l.18-.12h.06ZM422.24,131.28c0,1.89-.35,3.59-1.06,5.13h0c-.71,1.47-1.71,2.71-3,3.77-1.24,1-2.89,1.83-4.71,2.36s-3.77.82-5.95.82-4.18-.29-5.95-.82c-1.83-.53-3.36-1.36-4.6-2.36s-2.24-2.24-3-3.77c-.71-1.47-1.06-3.18-1.06-5.13s.35-3.59,1.06-5.07c.71-1.47,1.71-2.71,3-3.71s2.89-1.83,4.71-2.36c1.83-.53,3.89-.82,6.07-.82s4.18.29,5.95.82c1.83.53,3.36,1.24,4.6,2.24s2.24,2.24,3,3.71,1.06,3.18,1.06,5.07l-.12.12h0Z" />
+            <path class="cls-1"
+              d="M462.01,135.7c-.29-.53-.65-1.06-1-1.65-.35-.47-.82-1-1.36-1.36h-.12c.65-.18,1.18-.35,1.65-.65,1.06-.53,2.06-1.18,2.83-1.89.71-.71,1.36-1.65,1.71-2.53s.53-2,.53-3.06c0-1.71-.47-3.18-1.24-4.36-.82-1.06-1.89-2-3.24-2.65-1.24-.65-2.83-1-4.42-1.24-1.65-.18-3.24-.35-4.95-.35h-18.74v30.75h4.71v-13.02h12.9c1,0,1.83.12,2.53.35.71.29,1.36.65,1.89,1,.53.47,1.06.88,1.47,1.53.47.65.82,1.24,1.18,2l4.18,8.13h5.24l-4.77-9.25-1-1.83h.12l-.12.06ZM438.26,119.85h13.67c3.24,0,5.71.35,7.31,1.18s2.06,1.83,2.06,3.42-.18,1.83-.53,2.42-.88,1.06-1.65,1.53c-.82.47-1.89.71-3.18.88-1.36.18-3,.29-4.89.29h-12.84v-9.84.12h.06Z" />
+            <path class="cls-1"
+              d="M502.54,135.7c-.29-.53-.65-1.06-1-1.65-.35-.47-.82-1-1.36-1.36h-.12c.65-.18,1.18-.35,1.65-.65,1.06-.53,2.06-1.18,2.83-1.89.71-.71,1.36-1.65,1.71-2.53s.53-2,.53-3.06c0-1.71-.47-3.18-1.24-4.36-.82-1.06-1.89-2-3.24-2.65-1.24-.65-2.83-1-4.42-1.24-1.65-.18-3.24-.35-4.95-.35h-18.74v30.75h4.71v-13.02h12.9c1,0,1.83.12,2.53.35.71.29,1.36.65,1.89,1,.53.47,1.06.88,1.47,1.53.47.65.82,1.24,1.18,2l4.18,8.13h5.24l-5.71-11.02h-.06ZM478.74,119.85h13.67c3.24,0,5.71.35,7.31,1.18s2.06,1.83,2.06,3.42-.18,1.83-.53,2.42-.88,1.06-1.65,1.53c-.82.47-1.89.71-3.18.88-1.36.18-3,.29-4.89.29h-12.84v-9.84.12h.06Z" />
+          </g>
+          <path class="cls-1"
+            d="M269.16,47.28l-48.1-27.77c-2.8-1.61-6.03-2.45-9.11-2.45-10.1,0-18.37,8.27-18.37,18.37v55.6c0,10.1,8.27,18.37,18.37,18.37s6.38-.84,9.11-2.45l48.1-27.77c5.68-3.23,9.11-9.4,9.11-15.92s-3.58-12.69-9.11-15.92v-.14.07Z" />
+          <path class="cls-1" d="M212.3,34.31s-.21,0-.35-.14c0,0,.21,0,.35.14Z" />
+          <path class="cls-1" d="M212.3,92.01s-.21,0-.35.14c0,0,.21,0,.35-.14l30.57-17.67-30.57,17.67Z" />
+          <path class="cls-1" d="M260.96,63.69c.14-.21.21-.56.14-.84,0,.35,0,.56-.14.84Z" />
+          <path class="cls-1"
+            d="M315.71,34.24c.21,0,.42,0,.56.14l48.1,27.77c.77.42.77,1.61,0,2.03l-48.1,27.77c-.21.14-.42.14-.56.14-.63,0-1.19-.56-1.19-1.19v-55.6c0-.63.56-1.19,1.19-1.19M315.71,18.11c-9.61,0-17.32,7.71-17.32,17.32v55.6c0,9.61,7.71,17.32,17.32,17.32s6.03-.77,8.62-2.38l48.1-27.77c5.4-3.16,8.62-8.83,8.62-14.93s-3.37-11.92-8.62-14.93l-48.1-27.77c-2.59-1.47-5.61-2.38-8.62-2.38h0v-.14.07Z" />
+          <path class="cls-1"
+            d="M129.35,74.48h-18.86l-22.51,38.91c-10.52,18.37-23.14,27.62-37.65,27.62s-16.34-3.23-22.51-9.61c-6.03-6.45-9.04-14.3-9.04-23.77s2.38-15.07,7.01-22.3c4.63-7.08,11.01-13.04,19.07-17.74,6.03-3.44,12.69-5.82,19.98-7.29,7.29-1.4,17.11-2.17,29.24-2.17h5.05l5.4-9.89c7.43-13.67,16.55-22.79,27.34-27.41,6.87-2.87,16.06-4.42,27.13-4.42s5.05.63,6.66,1.96c1.61,1.26,2.45,3.01,2.45,5.26s-.35,2.24-.84,3.65l-.63,1.61-11.71,29.24h6.87c5.05,0,7.64,2.17,7.64,6.59s-1.05,4.98-3.16,6.8-4.63,2.8-7.64,2.8h-10.45l-7.5,18.51h12.83c5.05,0,7.64,2.17,7.64,6.59s-1.05,5.05-3.16,6.87-4.63,2.8-7.64,2.8h-16.34c-3.86,0-7.08-.98-9.61-3.01-2.45-2.03-3.65-4.63-3.65-7.85s.98-6.03,2.8-10.52l5.4-13.32.35.14v-.07ZM90.02,74.48h-5.82c-12.9,0-23.21,2.38-30.85,7.22-4.84,3.16-8.69,6.87-11.64,11.5-2.87,4.63-4.28,9.26-4.28,13.95s1.4,7.99,4.07,11.08c2.8,3.01,6.1,4.63,10.03,4.63,6.87,0,12.9-4.49,18.09-13.53l20.12-34.78.35-.14-.07.07ZM136.01,58.22l9.82-24.12c-4.84.35-8.83,1.82-12.13,4.63-3.37,2.66-7.01,7.71-11.22,14.93l-2.8,4.63h16.34v-.14.07Z" />
+        </svg>
+    </a>
+    <span class="grow"></span>
+      <a class="mast-link back-btn" href="/" onclick="event.preventDefault(); closeGuide();" aria-label="Fechar Guia de Variáveis" title="Retornar ao configurador">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      <span>Voltar ao configurador</span>
+    </a>
+    <button type="button" class="theme-toggle" aria-label="Mudar de tema" title="Mudar de tema">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+  </div>
+</header>
+
+<div class="doc">
+  <nav class="toc" aria-label="Nesta página">
+    <p class="toc-title">Nesta página</p>
+    <ol>
+        <li><a href="#s1">Como usar</a></li>
+        <li><a href="#s2">Título &amp; Série</a></li>
+        <li><a href="#s3">Qualidade de Imagem</a></li>
+        <li><a href="#s4">Áudio</a></li>
+        <li><a href="#s5">Idiomas</a></li>
+        <li><a href="#s6">Fonte &amp; Estatísticas</a></li>
+        <li><a href="#s7">Presets prontos da comunidade</a></li>
+    </ol>
+  </nav>
+
+  <main class="wrap" id="conteudo">
+    <div class="guide-header-title">
+      <h1>Guia de variáveis</h1>
+      <p>Referência completa para personalizar o formato dos streams no Stremio. Clique em uma variável para copiá-la.</p>
+    </div>
+
+  <!-- SEÇÃO 1: COMO USAR -->
+  <div class="sh" id="s1">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+        <path d="M9 18h6"/>
+        <path d="M10 22h4"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Como usar</h2>
+      <div class="ss">Instruções para personalização dos templates de stream</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="tip">
+      <span class="tip-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+        </svg>
+      </span>
+      <span>Use <code>{{variavel}}</code> nos campos LINHA 1 e LINHA 2 do editor de template. O AddTORR substitui cada token pelo valor real extraído do torrent.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 10 4 15 9 20"/>
+          <path d="M20 4v7a4 4 0 0 1-4 4H4"/>
+        </svg>
+      </span>
+      <span>Pressione <strong>Enter</strong> no campo de texto para criar uma nova linha. No Stremio, cada linha aparece separada visualmente.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+          <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+          <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+          <line x1="2" x2="22" y1="2" y2="22"/>
+        </svg>
+      </span>
+      <span>Se um campo não existir no torrent (ex: sem HDR), a variável some automaticamente — sem deixar espaços extras.</span>
+    </div>
+    <div class="tip">
+      <span class="tip-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+      </span>
+      <span><code>{{cache}}</code> só aparece se o torrent estiver em cache no seu serviço Debrid configurado.</span>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: TÍTULO & SÉRIE (4 variáveis) -->
+  <div class="sh" id="s2">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="18" height="18" x="3" y="3" rx="2"/>
+        <path d="M7 3v18"/>
+        <path d="M3 7.5h4"/>
+        <path d="M3 12h18"/>
+        <path d="M3 16.5h4"/>
+        <path d="M17 3v18"/>
+        <path d="M17 7.5h4"/>
+        <path d="M17 16.5h4"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Título &amp; Série</h2>
+      <div class="ss">Variáveis para nome da obra, ano e numeração de episódios</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-responsive">
+      <table class="var-table">
+        <thead>
+          <tr>
+            <th scope="col" data-w="28">Variável</th>
+            <th scope="col" data-w="44">Descrição</th>
+            <th scope="col" data-w="28">Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{title}}', 'Variável {{title}} copiada!')" title="Clique para copiar {{title}}">
+                <span>{{title}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Título limpo do conteúdo</td>
+            <td><span class="example">Interstellar</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{year}}', 'Variável {{year}} copiada!')" title="Clique para copiar {{year}}">
+                <span>{{year}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Ano de lançamento</td>
+            <td><span class="example">2014</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{season}}', 'Variável {{season}} copiada!')" title="Clique para copiar {{season}}">
+                <span>{{season}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Temporada (formato curto)</td>
+            <td><span class="example">S01</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{episode}}', 'Variável {{episode}} copiada!')" title="Clique para copiar {{episode}}">
+                <span>{{episode}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Episódio (formato curto)</td>
+            <td><span class="example">E05</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: QUALIDADE DE IMAGEM (8 variáveis) -->
+  <div class="sh" id="s3">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="20" height="15" x="2" y="7" rx="2" ry="2"/>
+        <polyline points="17 2 12 7 7 2"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Qualidade de Imagem</h2>
+      <div class="ss">Resolução, codecs de compressão, tags HDR e edições</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-responsive">
+      <table class="var-table">
+        <thead>
+          <tr>
+            <th scope="col" data-w="28">Variável</th>
+            <th scope="col" data-w="44">Descrição</th>
+            <th scope="col" data-w="28">Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{resolution}}', 'Variável {{resolution}} copiada!')" title="Clique para copiar {{resolution}}">
+                <span>{{resolution}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Resolução curta</td>
+            <td><span class="example">4K</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{resolution_full}}', 'Variável {{resolution_full}} copiada!')" title="Clique para copiar {{resolution_full}}">
+                <span>{{resolution_full}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Resolução completa</td>
+            <td><span class="example">2160p</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{quality}}', 'Variável {{quality}} copiada!')" title="Clique para copiar {{quality}}">
+                <span>{{quality}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Fonte + HDR combinados</td>
+            <td><span class="example">BluRay | DV+HDR10+</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{quality_tag}}', 'Variável {{quality_tag}} copiada!')" title="Clique para copiar {{quality_tag}}">
+                <span>{{quality_tag}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Só a fonte (sem HDR)</td>
+            <td><span class="example">BluRay</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{hdr}}', 'Variável {{hdr}} copiada!')" title="Clique para copiar {{hdr}}">
+                <span>{{hdr}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Todas as tags HDR</td>
+            <td><span class="example">DV+HDR10+</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{hdr_top}}', 'Variável {{hdr_top}} copiada!')" title="Clique para copiar {{hdr_top}}">
+                <span>{{hdr_top}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Melhor tag HDR disponível</td>
+            <td><span class="example">DV</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{codec}}', 'Variável {{codec}} copiada!')" title="Clique para copiar {{codec}}">
+                <span>{{codec}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Codec de vídeo</td>
+            <td><span class="example">x265</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{edition}}', 'Variável {{edition}} copiada!')" title="Clique para copiar {{edition}}">
+                <span>{{edition}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Edição especial</td>
+            <td><span class="example">Director's Cut</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: ÁUDIO (2 variáveis) -->
+  <div class="sh" id="s4">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Áudio</h2>
+      <div class="ss">Formatos acústicos e canais surround</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-responsive">
+      <table class="var-table">
+        <thead>
+          <tr>
+            <th scope="col" data-w="28">Variável</th>
+            <th scope="col" data-w="44">Descrição</th>
+            <th scope="col" data-w="28">Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{audio}}', 'Variável {{audio}} copiada!')" title="Clique para copiar {{audio}}">
+                <span>{{audio}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Formato(s) de áudio</td>
+            <td><span class="example">TrueHD Atmos</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{channels}}', 'Variável {{channels}} copiada!')" title="Clique para copiar {{channels}}">
+                <span>{{channels}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Canais de áudio</td>
+            <td><span class="example">7.1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: IDIOMAS (4 variáveis) -->
+  <div class="sh" id="s5">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+        <path d="M2 12h20"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Idiomas</h2>
+      <div class="ss">Códigos de linguagem, nomes por extenso e detecção multi-áudio</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-responsive">
+      <table class="var-table">
+        <thead>
+          <tr>
+            <th scope="col" data-w="28">Variável</th>
+            <th scope="col" data-w="44">Descrição</th>
+            <th scope="col" data-w="28">Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{langs_upper}}', 'Variável {{langs_upper}} copiada!')" title="Clique para copiar {{langs_upper}}">
+                <span>{{langs_upper}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Código(s) de idioma em maiúsculo</td>
+            <td><span class="example">PT EN</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{langs_long}}', 'Variável {{langs_long}} copiada!')" title="Clique para copiar {{langs_long}}">
+                <span>{{langs_long}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Nome completo do idioma</td>
+            <td><span class="example">Português, English</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{langs_lower}}', 'Variável {{langs_lower}} copiada!')" title="Clique para copiar {{langs_lower}}">
+                <span>{{langs_lower}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Nome do idioma em minúsculo</td>
+            <td><span class="example">português, english</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{multi}}', 'Variável {{multi}} copiada!')" title="Clique para copiar {{multi}}">
+                <span>{{multi}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Exibe &quot;MULTI&quot; se for multi-idioma</td>
+            <td><span class="example">MULTI</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6: FONTE & STATS (7 variáveis) -->
+  <div class="sh" id="s6">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3v18h18"/>
+        <path d="M18 17V9"/>
+        <path d="M13 17V5"/>
+        <path d="M8 17v-3"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Fonte &amp; Estatísticas</h2>
+      <div class="ss">Dados operacionais, métricas de seeders, status Debrid e grupos de release</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-responsive">
+      <table class="var-table">
+        <thead>
+          <tr>
+            <th scope="col" data-w="28">Variável</th>
+            <th scope="col" data-w="44">Descrição</th>
+            <th scope="col" data-w="28">Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{source}}', 'Variável {{source}} copiada!')" title="Clique para copiar {{source}}">
+                <span>{{source}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Nome da fonte</td>
+            <td><span class="example">Fonte 1</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{seeds}}', 'Variável {{seeds}} copiada!')" title="Clique para copiar {{seeds}}">
+                <span>{{seeds}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Número de seeders</td>
+            <td><span class="example">1240</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{size}}', 'Variável {{size}} copiada!')" title="Clique para copiar {{size}}">
+                <span>{{size}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Tamanho do arquivo</td>
+            <td><span class="example">58.4 GB</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{age}}', 'Variável {{age}} copiada!')" title="Clique para copiar {{age}}">
+                <span>{{age}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Idade do torrent</td>
+            <td><span class="example">3d</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{cache}}', 'Variável {{cache}} copiada!')" title="Clique para copiar {{cache}}">
+                <span>{{cache}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">⚡ se em cache Debrid, vazio se não</td>
+            <td><span class="example">⚡</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{message}}', 'Variável {{message}} copiada!')" title="Clique para copiar {{message}}">
+                <span>{{message}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Mensagem do addon fonte</td>
+            <td><span class="example">No streams found</span></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="token" onclick="copyToClipboard('{{release_group}}', 'Variável {{release_group}} copiada!')" title="Clique para copiar {{release_group}}">
+                <span>{{release_group}}</span>
+                <svg class="copy-icon" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </td>
+            <td class="desc">Grupo de lançamento</td>
+            <td><span class="example">FraMeSToR</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7: PRESETS COMUNITÁRIOS (5 presets exatos) -->
+  <div class="sh" id="s7">
+    <div class="sh-icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+      </svg>
+    </div>
+    <div class="sh-text">
+      <h2 class="st">Presets prontos da comunidade</h2>
+      <div class="ss">Modelos pré-configurados para você copiar ou se inspirar</div>
+    </div>
+  </div>
+  <div class="section">
+
+    <!-- PRESET 1: AddTORR Padrão -->
+    <div class="preset-block" data-preset="default">
+      <div class="preset-header">
+        <div class="preset-name">
+          <span>⭐ AddTORR Padrão</span>
+        </div>
+        <button class="btn-copy-preset" onclick="copyPreset('default', '⭐ AddTORR Padrão')" title="Copiar Linha 1 e Linha 2 deste preset">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span>Copiar Preset</span>
+        </button>
+      </div>
+      <div class="preset-lines">
+        <div class="preset-line">
+          <span class="line-badge l1">L1</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-default-l1">{{resolution_full}}{{cache}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-default-l1', 'Linha 1 do AddTORR Padrão copiada!')" title="Copiar Linha 1" aria-label="Copiar Linha 1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="preset-line">
+          <span class="line-badge l2">L2</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-default-l2">{{quality}} | {{hdr}}
+{{audio}} {{channels}}
+({{seeds}}) | {{size}} | {{langs_upper}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-default-l2', 'Linha 2 do AddTORR Padrão copiada!')" title="Copiar Linha 2" aria-label="Copiar Linha 2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET 2: Torrentio Style -->
+    <div class="preset-block" data-preset="torrentio">
+      <div class="preset-header">
+        <div class="preset-name">
+          <span><i data-lucide="target" class="icon-sm"></i> Torrentio Style</span>
+        </div>
+        <button class="btn-copy-preset" onclick="copyPreset('torrentio', '🎯 Torrentio Style')" title="Copiar Linha 1 e Linha 2 deste preset">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span>Copiar Preset</span>
+        </button>
+      </div>
+      <div class="preset-lines">
+        <div class="preset-line">
+          <span class="line-badge l1">L1</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-torrentio-l1">{{resolution}} {{quality_tag}} {{hdr_top}} {{codec}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-torrentio-l1', 'Linha 1 do Torrentio Style copiada!')" title="Copiar Linha 1" aria-label="Copiar Linha 1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="preset-line">
+          <span class="line-badge l2">L2</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-torrentio-l2">👥 {{seeds}} 💾 {{size}} {{cache}} {{source}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-torrentio-l2', 'Linha 2 do Torrentio Style copiada!')" title="Copiar Linha 2" aria-label="Copiar Linha 2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET 3: AIOStreams Compacto -->
+    <div class="preset-block" data-preset="aio-compact">
+      <div class="preset-header">
+        <div class="preset-name">
+          <span><i data-lucide="package" class="icon-sm"></i> AIOStreams Compacto</span>
+        </div>
+        <button class="btn-copy-preset" onclick="copyPreset('aio-compact', '📦 AIOStreams Compacto')" title="Copiar Linha 1 e Linha 2 deste preset">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span>Copiar Preset</span>
+        </button>
+      </div>
+      <div class="preset-lines">
+        <div class="preset-line">
+          <span class="line-badge l1">L1</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-aio-compact-l1">{{cache}} {{resolution}} {{quality}} {{audio}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-aio-compact-l1', 'Linha 1 do AIOStreams Compacto copiada!')" title="Copiar Linha 1" aria-label="Copiar Linha 1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="preset-line">
+          <span class="line-badge l2">L2</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-aio-compact-l2">🌱{{seeds}} 📦{{size}} 🌐{{langs_upper}} — {{source}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-aio-compact-l2', 'Linha 2 do AIOStreams Compacto copiada!')" title="Copiar Linha 2" aria-label="Copiar Linha 2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET 4: AIOStreams Verboso -->
+    <div class="preset-block" data-preset="aio-verbose">
+      <div class="preset-header">
+        <div class="preset-name">
+          <span><i data-lucide="clipboard-list" class="icon-sm"></i> AIOStreams Verboso</span>
+        </div>
+        <button class="btn-copy-preset" onclick="copyPreset('aio-verbose', '📋 AIOStreams Verboso')" title="Copiar Linha 1 e Linha 2 deste preset">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span>Copiar Preset</span>
+        </button>
+      </div>
+      <div class="preset-lines">
+        <div class="preset-line">
+          <span class="line-badge l1">L1</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-aio-verbose-l1">{{resolution_full}} | {{quality_tag}} | {{hdr}} | {{codec}} {{cache}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-aio-verbose-l1', 'Linha 1 do AIOStreams Verboso copiada!')" title="Copiar Linha 1" aria-label="Copiar Linha 1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="preset-line">
+          <span class="line-badge l2">L2</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-aio-verbose-l2">🔊 {{audio}} {{channels}}
+👥 {{seeds}} seeds · 💾 {{size}} · ⏱️ {{age}}
+🌍 {{langs_long}} — via {{source}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-aio-verbose-l2', 'Linha 2 do AIOStreams Verboso copiada!')" title="Copiar Linha 2" aria-label="Copiar Linha 2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET 5: Minimalista -->
+    <div class="preset-block" data-preset="minimal">
+      <div class="preset-header">
+        <div class="preset-name">
+          <span><i data-lucide="sparkles" class="icon-sm"></i> Minimalista</span>
+        </div>
+        <button class="btn-copy-preset" onclick="copyPreset('minimal', '✨ Minimalista')" title="Copiar Linha 1 e Linha 2 deste preset">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span>Copiar Preset</span>
+        </button>
+      </div>
+      <div class="preset-lines">
+        <div class="preset-line">
+          <span class="line-badge l1">L1</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-minimal-l1">{{resolution}} {{quality_tag}} {{cache}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-minimal-l1', 'Linha 1 do Minimalista copiada!')" title="Copiar Linha 1" aria-label="Copiar Linha 1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="preset-line">
+          <span class="line-badge l2">L2</span>
+          <div class="preset-code-wrap">
+            <div class="preset-code" id="preset-minimal-l2">{{seeds}} seeds · {{size}}</div>
+            <button class="btn-copy-line" onclick="copyLine('preset-minimal-l2', 'Linha 2 do Minimalista copiada!')" title="Copiar Linha 2" aria-label="Copiar Linha 2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </main>
+</div>
+
+<!-- COMPONENTE TOAST DE NOTIFICAÇÃO -->
+<div class="toast" id="guide-toast" role="status" aria-live="polite">
+  <span class="toast-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </span>
+  <span id="guide-toast-msg">Copiado para a área de transferência!</span>
+</div>
+
+<script>
+// ── Fechamento seguro do guia com fallback gracioso ──
+function closeGuide() {
+  if (window.opener) {
+    window.close();
+  } else if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = '/';
+  }
+}
+
+// ── Utilitário de Feedback Visual (Toast) ──
+let toastTimer = null;
+function showToast(message) {
+  const toast = document.getElementById('guide-toast');
+  const msgEl = document.getElementById('guide-toast-msg');
+  if (!toast || !msgEl) return;
+  
+  msgEl.textContent = message;
+  toast.classList.add('show');
+  
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+// ── Copiar texto para área de transferência ──
+function copyToClipboard(text, successMsg) {
+  if (!text) return;
+  const msg = successMsg || 'Copiado para a área de transferência!';
+  
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(msg);
+    }).catch(() => {
+      fallbackCopy(text, msg);
+    });
+  } else {
+    fallbackCopy(text, msg);
+  }
+}
+
+function fallbackCopy(text, successMsg) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const successful = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (successful) {
+      showToast(successMsg);
+    } else {
+      showToast('Erro ao copiar automaticamente.');
+    }
+  } catch (err) {
+    showToast('Erro ao copiar.');
+  }
+}
+
+// ── Copiar linha individual de preset ──
+function copyLine(elementId, successMsg) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  copyToClipboard(el.textContent.trim(), successMsg);
+}
+
+// ── Copiar preset completo (L1 + L2) ──
+function copyPreset(presetKey, presetName) {
+  const l1El = document.getElementById(`preset-${presetKey}-l1`);
+  const l2El = document.getElementById(`preset-${presetKey}-l2`);
+  if (!l1El || !l2El) return;
+  
+  const content = `// LINHA 1:\n${l1El.textContent.trim()}\n\n// LINHA 2:\n${l2El.textContent.trim()}`;
+  copyToClipboard(content, `Preset ${presetName} copiado!`);
+}
+</script>
+
+<script>
+// Apenas interface: desenha os ícones Lucide dos presets
+if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+// Apenas interface: marca no índice a seção que está na tela
+(function () {
+  const links = [...document.querySelectorAll('.toc a')];
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  const byId = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      links.forEach(a => a.removeAttribute('aria-current'));
+      const a = byId.get(en.target.id);
+      if (a) a.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-72px 0px -70% 0px' });
+  byId.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>

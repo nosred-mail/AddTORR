@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#161616">
+  <meta name="description" content="Hub para Stremio: filtre, ordene e personalize os streams das suas fontes.">
+  <title>AddTORR — Agregador Inteligente para Stremio</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preload" href="/fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/lucide.min.js"></script>
+</head>
+
+<body>
+  <a class="skip" href="#panels">Pular para a configuração</a>
+
+  <header class="masthead">
+    <div class="masthead-in">
+      <a class="brand" href="/" aria-label="AddTORR — início">
+        <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 150" class="logo-svg" role="img" aria-label="AddTORR">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #1dff9a;
+              }
+            </style>
+          </defs>
+          <g>
+            <polygon class="cls-1"
+              points="352.48 119.85 366.09 119.85 366.09 146.72 370.81 146.72 370.81 119.85 384.65 119.85 384.65 115.97 352.48 115.97 352.48 119.85" />
+            <path class="cls-1"
+              d="M421.53,119.68c-1.71-1.36-3.77-2.42-6.25-3.18-2.36-.71-4.95-1.06-7.78-1.06s-5.42.35-7.78,1.06c-2.36.71-4.42,1.83-6.13,3.18s-3.18,3.06-4.18,4.95c-1,2-1.47,4.18-1.47,6.6s.47,4.6,1.47,6.48c1,2,2.36,3.59,4.07,5.07,1.71,1.36,3.77,2.42,6.13,3.24,2.36.71,4.95,1.18,7.78,1.18s5.42-.35,7.78-1.18c2.36-.71,4.42-1.83,6.13-3.24s3.06-3.06,4.07-5.07c1-2,1.47-4.18,1.47-6.48s-.53-4.6-1.47-6.48c-1-1.89-2.36-3.59-4.07-4.95l.18-.12h.06ZM422.24,131.28c0,1.89-.35,3.59-1.06,5.13h0c-.71,1.47-1.71,2.71-3,3.77-1.24,1-2.89,1.83-4.71,2.36s-3.77.82-5.95.82-4.18-.29-5.95-.82c-1.83-.53-3.36-1.36-4.6-2.36s-2.24-2.24-3-3.77c-.71-1.47-1.06-3.18-1.06-5.13s.35-3.59,1.06-5.07c.71-1.47,1.71-2.71,3-3.71s2.89-1.83,4.71-2.36c1.83-.53,3.89-.82,6.07-.82s4.18.29,5.95.82c1.83.53,3.36,1.24,4.6,2.24s2.24,2.24,3,3.71,1.06,3.18,1.06,5.07l-.12.12h0Z" />
+            <path class="cls-1"
+              d="M462.01,135.7c-.29-.53-.65-1.06-1-1.65-.35-.47-.82-1-1.36-1.36h-.12c.65-.18,1.18-.35,1.65-.65,1.06-.53,2.06-1.18,2.83-1.89.71-.71,1.36-1.65,1.71-2.53s.53-2,.53-3.06c0-1.71-.47-3.18-1.24-4.36-.82-1.06-1.89-2-3.24-2.65-1.24-.65-2.83-1-4.42-1.24-1.65-.18-3.24-.35-4.95-.35h-18.74v30.75h4.71v-13.02h12.9c1,0,1.83.12,2.53.35.71.29,1.36.65,1.89,1,.53.47,1.06.88,1.47,1.53.47.65.82,1.24,1.18,2l4.18,8.13h5.24l-4.77-9.25-1-1.83h.12l-.12.06ZM438.26,119.85h13.67c3.24,0,5.71.35,7.31,1.18s2.06,1.83,2.06,3.42-.18,1.83-.53,2.42-.88,1.06-1.65,1.53c-.82.47-1.89.71-3.18.88-1.36.18-3,.29-4.89.29h-12.84v-9.84.12h.06Z" />
+            <path class="cls-1"
+              d="M502.54,135.7c-.29-.53-.65-1.06-1-1.65-.35-.47-.82-1-1.36-1.36h-.12c.65-.18,1.18-.35,1.65-.65,1.06-.53,2.06-1.18,2.83-1.89.71-.71,1.36-1.65,1.71-2.53s.53-2,.53-3.06c0-1.71-.47-3.18-1.24-4.36-.82-1.06-1.89-2-3.24-2.65-1.24-.65-2.83-1-4.42-1.24-1.65-.18-3.24-.35-4.95-.35h-18.74v30.75h4.71v-13.02h12.9c1,0,1.83.12,2.53.35.71.29,1.36.65,1.89,1,.53.47,1.06.88,1.47,1.53.47.65.82,1.24,1.18,2l4.18,8.13h5.24l-5.71-11.02h-.06ZM478.74,119.85h13.67c3.24,0,5.71.35,7.31,1.18s2.06,1.83,2.06,3.42-.18,1.83-.53,2.42-.88,1.06-1.65,1.53c-.82.47-1.89.71-3.18.88-1.36.18-3,.29-4.89.29h-12.84v-9.84.12h.06Z" />
+          </g>
+          <path class="cls-1"
+            d="M269.16,47.28l-48.1-27.77c-2.8-1.61-6.03-2.45-9.11-2.45-10.1,0-18.37,8.27-18.37,18.37v55.6c0,10.1,8.27,18.37,18.37,18.37s6.38-.84,9.11-2.45l48.1-27.77c5.68-3.23,9.11-9.4,9.11-15.92s-3.58-12.69-9.11-15.92v-.14.07Z" />
+          <path class="cls-1" d="M212.3,34.31s-.21,0-.35-.14c0,0,.21,0,.35.14Z" />
+          <path class="cls-1" d="M212.3,92.01s-.21,0-.35.14c0,0,.21,0,.35-.14l30.57-17.67-30.57,17.67Z" />
+          <path class="cls-1" d="M260.96,63.69c.14-.21.21-.56.14-.84,0,.35,0,.56-.14.84Z" />
+          <path class="cls-1"
+            d="M315.71,34.24c.21,0,.42,0,.56.14l48.1,27.77c.77.42.77,1.61,0,2.03l-48.1,27.77c-.21.14-.42.14-.56.14-.63,0-1.19-.56-1.19-1.19v-55.6c0-.63.56-1.19,1.19-1.19M315.71,18.11c-9.61,0-17.32,7.71-17.32,17.32v55.6c0,9.61,7.71,17.32,17.32,17.32s6.03-.77,8.62-2.38l48.1-27.77c5.4-3.16,8.62-8.83,8.62-14.93s-3.37-11.92-8.62-14.93l-48.1-27.77c-2.59-1.47-5.61-2.38-8.62-2.38h0v-.14.07Z" />
+          <path class="cls-1"
+            d="M129.35,74.48h-18.86l-22.51,38.91c-10.52,18.37-23.14,27.62-37.65,27.62s-16.34-3.23-22.51-9.61c-6.03-6.45-9.04-14.3-9.04-23.77s2.38-15.07,7.01-22.3c4.63-7.08,11.01-13.04,19.07-17.74,6.03-3.44,12.69-5.82,19.98-7.29,7.29-1.4,17.11-2.17,29.24-2.17h5.05l5.4-9.89c7.43-13.67,16.55-22.79,27.34-27.41,6.87-2.87,16.06-4.42,27.13-4.42s5.05.63,6.66,1.96c1.61,1.26,2.45,3.01,2.45,5.26s-.35,2.24-.84,3.65l-.63,1.61-11.71,29.24h6.87c5.05,0,7.64,2.17,7.64,6.59s-1.05,4.98-3.16,6.8-4.63,2.8-7.64,2.8h-10.45l-7.5,18.51h12.83c5.05,0,7.64,2.17,7.64,6.59s-1.05,5.05-3.16,6.87-4.63,2.8-7.64,2.8h-16.34c-3.86,0-7.08-.98-9.61-3.01-2.45-2.03-3.65-4.63-3.65-7.85s.98-6.03,2.8-10.52l5.4-13.32.35.14v-.07ZM90.02,74.48h-5.82c-12.9,0-23.21,2.38-30.85,7.22-4.84,3.16-8.69,6.87-11.64,11.5-2.87,4.63-4.28,9.26-4.28,13.95s1.4,7.99,4.07,11.08c2.8,3.01,6.1,4.63,10.03,4.63,6.87,0,12.9-4.49,18.09-13.53l20.12-34.78.35-.14-.07.07ZM136.01,58.22l9.82-24.12c-4.84.35-8.83,1.82-12.13,4.63-3.37,2.66-7.01,7.71-11.22,14.93l-2.8,4.63h16.34v-.14.07Z" />
+        </svg>
+      </a>
+      <span class="ver" id="app-ver" hidden></span>
+      <span class="grow"></span>
+      <a class="mast-link" href="/guide.html" target="_blank" rel="noopener">Guia de variáveis</a>
+      <button type="button" class="theme-toggle" aria-label="Mudar de tema" title="Mudar de tema">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <aside class="support" id="support" aria-label="Apoie o projeto">
+    <div class="support-card" id="support-card" hidden>
+      <p class="support-title">Apoie o AddTORR</p>
+      <div class="support-qr">
+        <iframe id="livepix-frame" data-src="https://widget.livepix.gg/embed/16f84a2a-fa50-4eba-b2c7-6daa34839317" title="QR Code do LivePix" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      </div>
+      <a class="support-btn" href="https://livepix.gg/je4nderson" target="_blank" rel="noopener noreferrer">
+        Abrir o LivePix <i data-lucide="external-link" class="icon-xs"></i>
+      </a>
+      <button type="button" class="support-btn support-kofi" id="kofi-open" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 2.7 4.5 6.3 4.5c2.1 0 3.8 1.1 5.7 3.3 1.9-2.2 3.6-3.3 5.7-3.3 3.6 0 5.4 3.7 3.9 7.2C19.5 16.4 12 21 12 21Z"/></svg>
+        <span>Apoie no Ko-fi</span>
+      </button>
+    </div>
+    <button type="button" class="support-toggle" id="support-toggle" aria-expanded="false" aria-controls="support-card">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 2.7 4.5 6.3 4.5c2.1 0 3.8 1.1 5.7 3.3 1.9-2.2 3.6-3.3 5.7-3.3 3.6 0 5.4 3.7 3.9 7.2C19.5 16.4 12 21 12 21Z"/></svg>
+      <span>Apoie o projeto</span>
+    </button>
+  </aside>
+
+  <dialog class="kofi-dialog" id="kofi-dialog" aria-labelledby="kofi-title">
+    <div class="kofi-dialog-bar">
+      <h2 class="kofi-dialog-title" id="kofi-title">Apoie no Ko-fi</h2>
+      <button type="button" class="kofi-close" id="kofi-close" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="kofi-dialog-body">
+      <iframe id='kofiframe' data-src='https://ko-fi.com/nosredmail/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='nosredmail'></iframe>
+    </div>
+  </dialog>
+
+  <div class="shell">
+
+    <!-- ═══ SEÇÕES ═══ -->
+    <nav class="tabs-col" aria-label="Seções">
+      <div class="tabs" role="tablist" aria-label="Seções da configuração" aria-orientation="vertical">
+        <button type="button" class="tab" role="tab" id="tabbtn-sources" aria-controls="tab-sources" aria-selected="true" data-tab="sources">
+          <span class="tab-name">Fontes</span>
+          <span class="tab-sub">Manifest e Debrid</span>
+        </button>
+        <button type="button" class="tab" role="tab" id="tabbtn-filters" aria-controls="tab-filters" aria-selected="false" tabindex="-1" data-tab="filters">
+          <span class="tab-name">Filtros</span>
+          <span class="tab-sub">O que descartar</span>
+        </button>
+        <button type="button" class="tab" role="tab" id="tabbtn-organize" aria-controls="tab-organize" aria-selected="false" tabindex="-1" data-tab="organize">
+          <span class="tab-name">Organização</span>
+          <span class="tab-sub">O que entra e em que ordem</span>
+        </button>
+        <button type="button" class="tab" role="tab" id="tabbtn-builder" aria-controls="tab-builder" aria-selected="false" tabindex="-1" data-tab="builder">
+          <span class="tab-name">Formato</span>
+          <span class="tab-sub">Como aparece no Stremio</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══ CONFIGURAÇÃO ═══ -->
+    <main class="panels" id="panels">
+
+      <!-- ── FONTES ── -->
+      <section class="panel active" role="tabpanel" id="tab-sources" aria-labelledby="tabbtn-sources">
+        <header>
+          <h1 class="panel-title">Fontes</h1>
+          <p class="panel-lead">Cole o link do seu agregador. O AddTORR busca nele, remove duplicados, filtra e reorganiza o resultado.</p>
+        </header>
+
+        <div class="callout">
+          <p class="callout-title">Antes de colar o link</p>
+          <p>Gere o link no seu próprio agregador e deixe-o mostrando o máximo de resultados possível. Não aplique filtros nele: o AddTORR faz toda a filtragem e a ordenação por conta própria.</p>
+          <dl class="kv">
+            <div><dt>Limite de resultados</dt><dd>Máximo / Todos</dd></div>
+            <div><dt>Filtros de qualidade, idioma e tamanho</dt><dd>Nenhum</dd></div>
+            <div><dt>Prioridade de idioma</dt><dd>Vazio</dd></div>
+          </dl>
+        </div>
+
+        <section class="group">
+          <h2 class="group-title">Adicionar fonte</h2>
+          <div class="field">
+            <label for="src-url">Link do manifest</label>
+            <input type="url" id="src-url" class="mono" placeholder="https://seu-agregador.exemplo/.../manifest.json" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="field">
+            <label for="src-name">Apelido <span class="opt">(opcional)</span></label>
+            <div class="inline">
+              <input type="text" id="src-name" placeholder="Nome (auto)" autocomplete="off">
+              <button type="button" class="btn btn-secondary" id="src-add"><i data-lucide="plus" class="icon-xs"></i> Adicionar</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="group">
+          <div class="group-head">
+            <h2 class="group-title">Fontes adicionadas</h2>
+            <span class="count" id="src-count">0 fontes</span>
+          </div>
+          <div id="src-list" class="slist">
+            <div class="empty"><span class="empty-i"><i data-lucide="inbox"></i></span>Nenhuma fonte adicionada.</div>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Debrid <span class="opt">(opcional)</span></h2>
+          <p class="group-note">Com um serviço Debrid, o AddTORR marca os streams que já estão em cache e libera o filtro “Somente em cache”.</p>
+          <div class="field">
+            <div class="field-label" id="lbl-debrid">Serviço</div>
+            <div class="seg" role="group" aria-labelledby="lbl-debrid">
+              <button type="button" class="provider-card active" data-provider="none" onclick="selectDebrid('none')">Nenhum</button>
+              <button type="button" class="provider-card" data-provider="realdebrid" onclick="selectDebrid('realdebrid')">Real-Debrid</button>
+              <button type="button" class="provider-card" data-provider="alldebrid" onclick="selectDebrid('alldebrid')">AllDebrid</button>
+              <button type="button" class="provider-card" data-provider="torbox" onclick="selectDebrid('torbox')">TorBox</button>
+            </div>
+          </div>
+
+          <select id="debrid-service" hidden onchange="selectDebrid(this.value)">
+            <option value="none">Nenhum (Sem cache)</option>
+            <option value="realdebrid">Real-Debrid</option>
+            <option value="alldebrid">AllDebrid</option>
+            <option value="torbox">TorBox</option>
+          </select>
+
+          <div id="debrid-key-wrap" style="display:none">
+            <div class="field">
+              <label for="debrid-api-key">Chave de API — <span id="dlabel">Serviço</span></label>
+              <div class="key-wrap">
+                <input type="password" id="debrid-api-key" class="mono" placeholder="Cole sua chave aqui" autocomplete="off" spellcheck="false"
+                  oninput="state.debrid.apiKey=this.value">
+                <button type="button" class="key-eye" onclick="toggleKey()" aria-label="Mostrar ou ocultar a chave"><i data-lucide="eye" id="eye-icon"></i></button>
+              </div>
+              <p class="hint">Está no painel do serviço, em “API” ou “Account Settings”.</p>
+            </div>
+          </div>
+
+          <p class="note">A chave fica apenas dentro do link de instalação (em Base64, que não é criptografia). Não compartilhe esse link.</p>
+        </section>
+      </section>
+
+      <!-- ── FILTROS ── -->
+      <section class="panel" role="tabpanel" id="tab-filters" aria-labelledby="tabbtn-filters">
+        <header>
+          <h1 class="panel-title">Filtros</h1>
+          <p class="panel-lead">O que não passar por aqui é descartado antes da ordenação. Deixe uma lista sem nada marcado para aceitar tudo.</p>
+        </header>
+
+        <section class="group">
+          <h2 class="group-title">Descartar</h2>
+          <div class="rows">
+            <div class="row row-click tw active" id="tw-no3d" onclick="toggleF('no3D',this)">
+              <div>
+                <div class="row-title" id="lbl-no3d">Excluir 3D</div>
+                <div class="row-desc">Remove releases SBS e HOU.</div>
+              </div>
+              <span class="toggle"><input type="checkbox" id="f-no3d" role="switch" checked aria-labelledby="lbl-no3d"><span class="ts" aria-hidden="true"></span></span>
+            </div>
+            <div class="row row-click tw" id="tw-cache" onclick="toggleF('cacheOnly',this)">
+              <div>
+                <div class="row-title" id="lbl-cache">Somente em cache</div>
+                <div class="row-desc">Mostra só o que o Debrid já tem. Exige uma chave Debrid.</div>
+              </div>
+              <span class="toggle"><input type="checkbox" id="f-cache" role="switch" aria-labelledby="lbl-cache"><span class="ts" aria-hidden="true"></span></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Limites</h2>
+          <div class="field">
+            <div class="slider-head">
+              <label for="f-size">Tamanho máximo</label>
+              <span class="slider-val" id="sv-size">Sem limite</span>
+            </div>
+            <input type="range" id="f-size" min="0" max="250" value="0" oninput="updSlider(this,'sv-size',v=>v==0?'Sem limite':v+'GB')">
+          </div>
+          <div class="field">
+            <div class="slider-head">
+              <label for="f-seeds">Seeds mínimos</label>
+              <span class="slider-val" id="sv-seeds">0</span>
+            </div>
+            <input type="range" id="f-seeds" min="0" max="500" value="0" oninput="updSlider(this,'sv-seeds',v=>v)">
+            <p class="hint">Streams em cache no Debrid ignoram este limite.</p>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Vídeo</h2>
+          <div class="field">
+            <div class="field-label" id="lbl-res">Resoluções</div>
+            <div class="chips" id="res-g" role="group" aria-labelledby="lbl-res">
+              <button type="button" class="chip" data-val="4K">4K</button>
+              <button type="button" class="chip" data-val="1440p">1440p</button>
+              <button type="button" class="chip" data-val="1080p">1080p</button>
+              <button type="button" class="chip" data-val="720p">720p</button>
+              <button type="button" class="chip" data-val="480p">480p</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label" id="lbl-hdr">HDR</div>
+            <div class="chips" id="hdr-g" role="group" aria-labelledby="lbl-hdr">
+              <button type="button" class="chip" data-val="Dolby Vision">Dolby Vision</button>
+              <button type="button" class="chip" data-val="HDR10+">HDR10+</button>
+              <button type="button" class="chip" data-val="HDR10">HDR10</button>
+              <button type="button" class="chip" data-val="HLG">HLG</button>
+              <button type="button" class="chip" data-val="HDR">HDR</button>
+              <button type="button" class="chip" data-val="SDR">SDR</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label" id="lbl-codec">Codecs de vídeo</div>
+            <div class="chips" id="codec-g" role="group" aria-labelledby="lbl-codec">
+              <button type="button" class="chip" data-val="AV1">AV1</button>
+              <button type="button" class="chip" data-val="x265">x265 / HEVC</button>
+              <button type="button" class="chip" data-val="x264">x264 / AVC</button>
+              <button type="button" class="chip" data-val="VP9">VP9</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Áudio e idioma</h2>
+          <div class="field">
+            <div class="field-label" id="lbl-acodec">Codecs de áudio</div>
+            <div class="chips" id="audio-codec-g" role="group" aria-labelledby="lbl-acodec">
+              <button type="button" class="chip" data-val="AAC">AAC</button>
+              <button type="button" class="chip" data-val="TrueHD">TrueHD</button>
+              <button type="button" class="chip" data-val="Atmos">Atmos</button>
+              <button type="button" class="chip" data-val="DTS-HD MA">DTS-HD MA</button>
+              <button type="button" class="chip" data-val="DD+">DD+</button>
+              <button type="button" class="chip" data-val="FLAC">FLAC</button>
+              <button type="button" class="chip" data-val="MP3">MP3</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label" id="lbl-lang">Idiomas preferidos</div>
+            <div class="chips" id="lang-g" role="group" aria-labelledby="lbl-lang">
+              <button type="button" class="chip active" data-val="PT" title="PT / PT-BR">Português</button>
+              <button type="button" class="chip" data-val="EN">Inglês</button>
+              <button type="button" class="chip" data-val="ES">Espanhol</button>
+              <button type="button" class="chip" data-val="FR">Francês</button>
+              <button type="button" class="chip" data-val="DE">Alemão</button>
+              <button type="button" class="chip" data-val="IT">Italiano</button>
+              <button type="button" class="chip" data-val="JP">Japonês</button>
+              <button type="button" class="chip" data-val="MULTI">Multi</button>
+            </div>
+            <p class="hint">Usados para ordenar e para os streams garantidos de idioma.</p>
+          </div>
+          <div class="rows">
+            <label class="row row-click">
+              <div>
+                <div class="row-title" id="lbl-strict">Modo estrito</div>
+                <div class="row-desc">Descarta streams que não tenham nenhum dos idiomas marcados.</div>
+              </div>
+              <span class="toggle"><input type="checkbox" id="f-strict" role="switch" aria-labelledby="lbl-strict"><span class="ts" aria-hidden="true"></span></span>
+            </label>
+          </div>
+        </section>
+      </section>
+
+      <!-- ── ORGANIZAÇÃO ── -->
+      <section class="panel" role="tabpanel" id="tab-organize" aria-labelledby="tabbtn-organize">
+        <header>
+          <h1 class="panel-title">Organização</h1>
+          <p class="panel-lead">Escolha o que chega ao Stremio e em que ordem. Ligue pelo menos um dos dois modos: sem nenhum, o addon não devolve streams.</p>
+        </header>
+
+        <section class="group">
+          <h2 class="group-title">Modos de saída</h2>
+          <div class="rows modes">
+
+        <div class="mode" id="tw-auto">
+          <label class="row row-click">
+            <div>
+              <div class="row-title" id="lbl-auto">Modo automático</div>
+              <div class="row-desc">Entrega os melhores streams de cada resolução, já ordenados.</div>
+            </div>
+            <span class="toggle"><input type="checkbox" id="mode-auto-cb" role="switch" aria-labelledby="lbl-auto" onchange="toggleMode('auto', this.checked)"><span class="ts" aria-hidden="true"></span></span>
+          </label>
+          <div class="drawer" id="drawer-auto">
+            <div class="field">
+              <div class="field-label" id="lbl-qty">Streams por resolução</div>
+              <div class="seg" role="group" aria-labelledby="lbl-qty">
+                <button type="button" class="qty-btn qty-main active" onclick="state.limits.autoLimit=1;document.querySelectorAll('.qty-btn').forEach(e=>e.classList.remove('active'));this.classList.add('active')">Só o melhor</button>
+                <button type="button" class="qty-btn" onclick="state.limits.autoLimit=2;document.querySelectorAll('.qty-btn').forEach(e=>e.classList.remove('active'));this.classList.add('active')">2</button>
+                <button type="button" class="qty-btn" onclick="state.limits.autoLimit=3;document.querySelectorAll('.qty-btn').forEach(e=>e.classList.remove('active'));this.classList.add('active')">3</button>
+                <button type="button" class="qty-btn" onclick="state.limits.autoLimit=4;document.querySelectorAll('.qty-btn').forEach(e=>e.classList.remove('active'));this.classList.add('active')">4</button>
+                <button type="button" class="qty-btn" onclick="state.limits.autoLimit=5;document.querySelectorAll('.qty-btn').forEach(e=>e.classList.remove('active'));this.classList.add('active')">5</button>
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-label" id="lbl-tag-auto">Selo antes do nome</div>
+              <div class="tsel" id="gts-auto" role="group" aria-labelledby="lbl-tag-auto">
+                <button type="button" class="tc active" data-val="🤖" title="Robô">🤖</button>
+                <button type="button" class="tc" data-val="Auto">Auto</button>
+                <button type="button" class="tc" data-val="Automático">Automático</button>
+              </div>
+              <input type="text" id="gtc-auto" class="custom-tag-input" placeholder="Ou escreva o seu (ex: 🤖)" aria-label="Selo personalizado do modo automático">
+            </div>
+          </div>
+        </div>
+
+        <div class="mode" id="tw-manual">
+          <label class="row row-click">
+            <div>
+              <div class="row-title" id="lbl-manual">Streams garantidos</div>
+              <div class="row-desc">Reserva vagas fixas no topo da lista, mesmo que o modo automático escolha outros links.</div>
+            </div>
+            <span class="toggle"><input type="checkbox" id="mode-manual-cb" role="switch" aria-labelledby="lbl-manual" onchange="toggleMode('manual', this.checked)"><span class="ts" aria-hidden="true"></span></span>
+          </label>
+          <div class="drawer drawer-g" id="drawer-manual">
+
+            <div class="gc" id="gc-quality">
+              <label class="gh">
+                <span class="toggle"><input type="checkbox" id="gtog-quality" role="switch" aria-labelledby="lbl-g-quality" onchange="toggleG('quality',this.checked)"><span class="ts" aria-hidden="true"></span></span>
+                <span class="gh-text"><span class="gt" id="lbl-g-quality"><i data-lucide="gem" class="icon-xs"></i> Qualidade</span><span class="gd">O de maior resolução, qualidade e HDR.</span></span>
+              </label>
+              <div class="gb dis" id="gb-quality" inert>
+                <div class="field">
+                  <label for="gbk-quality">Quantos streams</label>
+                  <select id="gbk-quality"><option value="0">1 stream</option><option value="1">2 (1 reserva)</option><option value="2">3 (2 reservas)</option></select>
+                </div>
+                <div class="field">
+                  <div class="field-label" id="lbl-tag-quality">Selo antes do nome</div>
+                  <div class="tsel" id="gts-quality" role="group" aria-labelledby="lbl-tag-quality">
+                    <button type="button" class="tc active" data-val="💎" title="Diamante">💎</button>
+                    <button type="button" class="tc" data-val="Qualidade">Qualidade</button>
+                    <button type="button" class="tc" data-val="QUA">QUA</button>
+                  </div>
+                  <input type="text" id="gtc-quality" class="custom-tag-input" placeholder="Ou o seu (ex: 💎)" aria-label="Selo personalizado de qualidade">
+                </div>
+              </div>
+            </div>
+
+            <div class="gc" id="gc-language">
+              <label class="gh">
+                <span class="toggle"><input type="checkbox" id="gtog-language" role="switch" aria-labelledby="lbl-g-language" onchange="toggleG('language',this.checked)"><span class="ts" aria-hidden="true"></span></span>
+                <span class="gh-text"><span class="gt" id="lbl-g-language"><i data-lucide="languages" class="icon-xs"></i> Idioma</span><span class="gd">O melhor stream nos idiomas preferidos (defina em Filtros).</span></span>
+              </label>
+              <div class="gb dis" id="gb-language" inert>
+                <div class="field">
+                  <label for="gbk-language">Quantos streams</label>
+                  <select id="gbk-language"><option value="0">1 stream</option><option value="1">2 (1 reserva)</option><option value="2">3 (2 reservas)</option></select>
+                </div>
+                <div class="field">
+                  <div class="field-label" id="lbl-tag-language">Selo antes do nome</div>
+                  <div class="tsel" id="gts-language" role="group" aria-labelledby="lbl-tag-language">
+                    <button type="button" class="tc active" data-val="📌" title="Pin">📌</button>
+                    <button type="button" class="tc" data-val="Dublado">Dublado</button>
+                    <button type="button" class="tc" data-val="DUB">DUB</button>
+                  </div>
+                  <input type="text" id="gtc-language" class="custom-tag-input" placeholder="Ou o seu (ex: 📌)" aria-label="Selo personalizado de idioma">
+                </div>
+                <div class="field">
+                  <label for="gl-pri">Desempate</label>
+                  <select id="gl-pri" onchange="state.guarantees.language.priority=this.value">
+                    <option value="res_seeds">Resolução › seeds</option>
+                    <option value="seeds_res">Seeds › resolução</option>
+                  </select>
+                </div>
+                <label class="inline-toggle">
+                  <span class="toggle"><input type="checkbox" id="gl-cache" role="switch" onchange="state.guarantees.language.cacheOnly=this.checked"><span class="ts" aria-hidden="true"></span></span>
+                  <span>Somente em cache</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="gc" id="gc-speed">
+              <label class="gh">
+                <span class="toggle"><input type="checkbox" id="gtog-speed" role="switch" aria-labelledby="lbl-g-speed" onchange="toggleG('speed',this.checked)"><span class="ts" aria-hidden="true"></span></span>
+                <span class="gh-text"><span class="gt" id="lbl-g-speed"><i data-lucide="zap" class="icon-xs"></i> Velocidade</span><span class="gd">O que tem mais seeds.</span></span>
+              </label>
+              <div class="gb dis" id="gb-speed" inert>
+                <div class="field">
+                  <label for="gbk-speed">Quantos streams</label>
+                  <select id="gbk-speed"><option value="0">1 stream</option><option value="1">2 (1 reserva)</option><option value="2">3 (2 reservas)</option></select>
+                </div>
+                <div class="field">
+                  <div class="field-label" id="lbl-tag-speed">Selo antes do nome</div>
+                  <div class="tsel" id="gts-speed" role="group" aria-labelledby="lbl-tag-speed">
+                    <button type="button" class="tc active" data-val="🔥" title="Fogo">🔥</button>
+                    <button type="button" class="tc" data-val="Rápido">Rápido</button>
+                    <button type="button" class="tc" data-val="FAST">FAST</button>
+                  </div>
+                  <input type="text" id="gtc-speed" class="custom-tag-input" placeholder="Ou o seu (ex: 🔥)" aria-label="Selo personalizado de velocidade">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Ordem de prioridade</h2>
+          <p class="group-note">Define o desempate entre streams parecidos: o critério de cima pesa mais. Arraste os itens ou use as setas.</p>
+          <div class="plist" id="plist"></div>
+          <div hidden>
+            <div id="plist-legacy"></div>
+            <select id="limit-mode"><option value="auto">auto</option><option value="1">1</option></select>
+          </div>
+        </section>
+      </section>
+
+      <!-- ── FORMATO ── -->
+      <section class="panel" role="tabpanel" id="tab-builder" aria-labelledby="tabbtn-builder">
+        <header>
+          <h1 class="panel-title">Formato</h1>
+          <p class="panel-lead">A linha 1 vira o nome do stream no Stremio; a linha 2, a descrição. O preview ao lado muda enquanto você edita.</p>
+        </header>
+
+        <section class="group">
+          <h2 class="group-title">Modelos prontos</h2>
+          <select id="preset-sel" hidden onchange="applyPreset(this.value)">
+            <option value="">— Selecione um preset —</option>
+            <option value="default">AddTORR Padrão</option>
+            <option value="torrentio">Torrentio Style</option>
+            <option value="aio-compact">AIOStreams Compacto</option>
+            <option value="aio-verbose">AIOStreams Verboso</option>
+            <option value="minimal">Minimalista</option>
+          </select>
+          <div class="btn-row">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('default')">Padrão</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('torrentio')">Torrentio</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('aio-compact')">AIO compacto</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('aio-verbose')">AIO verboso</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('minimal')">Minimalista</button>
+          </div>
+        </section>
+
+        <section class="group">
+          <div class="group-head">
+            <h2 class="group-title">Texto do stream</h2>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="resetTmpl()">
+              <i data-lucide="rotate-ccw" class="icon-xs"></i> Restaurar padrão
+            </button>
+          </div>
+          <div class="field">
+            <label for="tmpl-l1">Linha 1 <span class="opt">(nome e qualidade)</span></label>
+            <input type="text" id="tmpl-l1" class="drop-target" autocomplete="off" spellcheck="false" value="{{resolution_full}}{{cache}}"
+                   ondragover="handleDropOver(event)"
+                   ondragleave="handleDropLeave(event)"
+                   ondrop="handleDrop(event, 'tmpl-l1')">
+          </div>
+          <div class="field">
+            <label for="tmpl-l2">Linha 2 <span class="opt">(detalhes, áudio, idiomas)</span></label>
+            <textarea id="tmpl-l2" rows="3" class="drop-target" spellcheck="false"
+                      ondragover="handleDropOver(event)"
+                      ondragleave="handleDropLeave(event)"
+                      ondrop="handleDrop(event, 'tmpl-l2')">{{quality}} | {{hdr}}
+{{audio}} {{channels}}
+({{seeds}}) | {{size}} | {{langs_upper}}</textarea>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2 class="group-title">Variáveis</h2>
+          <p class="group-note">Clique para inserir onde está o cursor ou arraste para uma das linhas. Variáveis vazias somem sem deixar espaços duplos.</p>
+          <div id="vplt"></div>
+          <p class="note"><a class="link" href="/guide.html" target="_blank" rel="noopener">Abrir o guia completo de variáveis <i data-lucide="external-link" class="icon-xs"></i></a></p>
+        </section>
+      </section>
+
+    </main>
+
+    <!-- ═══ RESULTADO ═══ -->
+    <aside class="rail" id="rail" aria-label="Preview e instalação">
+
+      <section aria-labelledby="rail-preview-title">
+        <h2 class="rail-title rail-head" id="rail-preview-title">Preview no Stremio</h2>
+        <div class="screen">
+          <div class="screen-bar">
+            <span class="screen-title">Interstellar (2014)</span>
+            <span class="screen-note">Dados de exemplo</span>
+          </div>
+          <div class="preview-streams-list" id="pvstreams"></div>
+        </div>
+        <div class="rail-sim">
+          <label for="pvsim">Selo simulado</label>
+          <select id="pvsim" onchange="renderPreview()">
+            <option value="auto">Automático</option>
+            <option value="quality">Qualidade</option>
+            <option value="language">Idioma</option>
+            <option value="speed">Seeds</option>
+          </select>
+        </div>
+      </section>
+
+      <section aria-labelledby="rail-sum-title">
+        <h2 class="rail-title" id="rail-sum-title">Resumo</h2>
+        <dl class="summary">
+          <div><dt>Fontes</dt><dd id="st-src">0</dd></div>
+          <div><dt>Debrid</dt><dd id="st-deb">Nenhum</dd></div>
+          <div><dt>Garantias</dt><dd id="st-gar">0</dd></div>
+          <div><dt>Resoluções</dt><dd id="st-res">Todas</dd></div>
+          <div class="wide"><dt>Prioridade</dt><dd id="st-pri">—</dd></div>
+          <div hidden><dt>Limite</dt><dd id="st-lim">Auto</dd></div>
+        </dl>
+      </section>
+
+      <section class="install" aria-labelledby="rail-install-title">
+        <h2 class="sr-only" id="rail-install-title">Instalar no Stremio</h2>
+        <div class="notice" id="mode-warning" hidden>
+          Nenhum modo de saída ligado: o addon não devolveria streams.
+          <button type="button" class="link-btn" onclick="goTab('organize', true)">Ligar em Organização</button>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg" id="gen-btn" onclick="genConfig()">
+          <i data-lucide="zap" class="icon-btn"></i>
+          <span>Gerar Link Mestre</span>
+        </button>
+
+        <div class="result" id="result-sec" style="display:none">
+          <p class="result-status">Link Mestre pronto.</p>
+          <p class="notice result-stale">Você mudou algo depois de gerar este link. Gere de novo antes de instalar.</p>
+          <div class="rurl" id="res-web">—</div>
+          <div class="result-actions">
+            <button type="button" class="btn btn-secondary btn-open" onclick="openStremio()">
+              <i data-lucide="play" class="icon-btn"></i>
+              <span>Abrir no Stremio</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-copy-link" onclick="cpUrl('res-web')">
+              <i data-lucide="copy" class="icon-btn"></i>
+              <span>Copiar Link</span>
+            </button>
+          </div>
+          <div class="rurl" id="res-str" style="display:none">—</div>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <div class="dock" id="dock">
+    <button type="button" class="btn btn-primary btn-lg" id="dock-btn">Ver preview e instalar</button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ── STATE ── */
+    const state = {
+      sources: [],
+      debrid: { service: 'none', apiKey: '' },
+      modes: {
+        auto: { enabled: false, limit: 1, tag: '🤖' },
+        manual: { enabled: false }
+      },
+      guarantees: {
+        quality: { enabled: false, backups: 0, tag: '💎' },
+        language: { enabled: false, backups: 0, tag: '📌', cacheOnly: false, priority: 'res_seeds' },
+        speed: { enabled: false, backups: 0, tag: '🔥', conditionalSeeds: 0 },
+      },
+      includeOriginalLang: false,
+      priority: ['quality', 'language', 'seeds'],
+      limits: { mode: 'auto' },
+      filters: { cacheOnly: false, no3D: true, maxSizeGB: 0, minSeeds: 0, resolutions: [], hdr: [], codecs: [], audioCodecs: [], langs: ['PT'], strictLang: false },
+      preferredLangs: ['PT'],
+      template: {
+        line1: '{{resolution_full}}{{cache}}',
+        line2: '{{quality}} | {{hdr}}\n{{audio}} {{channels}}\n({{seeds}}) | {{size}} | {{langs_upper}}',
+      },
+      activeEditor: 'tmpl-l1',
+    };
+
+
+
+    /* ── MOCK ── */
+    const MOCK = [
+      { resolution: '4K', resolutionFull: '2160p', quality: 'BluRay', qualityLabel: 'BluRay', codec: 'x265', hdr: ['Dolby Vision', 'HDR10+'], topHdr: 'Dolby Vision', audioTags: ['TrueHD', 'Atmos'], channels: '7.1', langCodes: ['EN'], langNames: ['English'], langLower: ['english'], isMulti: false, source: 'Fonte 1', seeds: 1240, sizeStr: '58.4 GB', isCached: true, cleanTitle: 'Interstellar', year: 2014, seasonStr: null, episodeStr: null, edition: null, age: '3d', message: null },
+      { resolution: '1080p', resolutionFull: '1080p', quality: 'WEB-DL', qualityLabel: 'WEB-DL', codec: 'x264', hdr: ['HDR'], topHdr: 'HDR', audioTags: ['DD+'], channels: '5.1', langCodes: ['PT', 'EN'], langNames: ['Português', 'English'], langLower: ['português', 'english'], isMulti: false, source: 'Fonte 2', seeds: 384, sizeStr: '12.1 GB', isCached: true, cleanTitle: 'Interstellar', year: 2014, seasonStr: null, episodeStr: null, edition: null, age: '7d', message: null },
+      { resolution: '720p', resolutionFull: '720p', quality: 'WEBRip', qualityLabel: 'WEBRip', codec: 'x264', hdr: ['SDR'], topHdr: 'SDR', audioTags: ['AAC'], channels: '2.0', langCodes: ['PT'], langNames: ['Português'], langLower: ['português'], isMulti: false, source: 'Fonte 3', seeds: 92, sizeStr: '3.2 GB', isCached: false, cleanTitle: 'Interstellar', year: 2014, seasonStr: null, episodeStr: null, edition: null, age: '14d', message: null },
+    ];
+
+    const PRESETS = {
+      'default': { l1: '{{resolution_full}}{{cache}}', l2: '{{quality}} | {{hdr}}\n{{audio}} {{channels}}\n({{seeds}}) | {{size}} | {{langs_upper}}' },
+      'torrentio': { l1: '{{resolution}} {{quality_tag}} {{hdr_top}} {{codec}}', l2: '👥 {{seeds}} 💾 {{size}} {{cache}} {{source}}' },
+      'aio-compact': { l1: '{{cache}} {{resolution}} {{quality}} {{audio}}', l2: '🌱{{seeds}} 📦{{size}} 🌐{{langs_upper}} — {{source}}' },
+      'aio-verbose': { l1: '{{resolution_full}} | {{quality_tag}} | {{hdr}} | {{codec}} {{cache}}', l2: '🔊 {{audio}} {{channels}}\n👥 {{seeds}} · 💾 {{size}} · ⏱️ {{age}}\n🌍 {{langs_long}} — {{source}}' },
+      'minimal': { l1: '{{resolution}} {{quality_tag}} {{cache}}', l2: '{{seeds}} seeds · {{size}}' },
+    };
+
+    const VPLT = [
+      { cat: 'Título', vars: [{ t: '{{title}}', l: 'Título' }, { t: '{{year}}', l: 'Ano' }, { t: '{{season}}', l: 'Temp.', ex: 'S01' }, { t: '{{episode}}', l: 'Ep.', ex: 'E05' }] },
+      { cat: 'Qualidade', vars: [{ t: '{{resolution}}', l: 'Res.', ex: '4K' }, { t: '{{resolution_full}}', l: 'Res. Ext.', ex: '2160p' }, { t: '{{quality}}', l: 'Formato', ex: 'BluRay' }, { t: '{{quality_tag}}', l: 'Selo Qual.', ex: 'BluRay' }, { t: '{{hdr}}', l: 'HDR', ex: 'Dolby Vision' }, { t: '{{hdr_top}}', l: 'HDR Top', ex: 'DV' }, { t: '{{codec}}', l: 'Codec', ex: 'x265' }, { t: '{{edition}}', l: 'Edição' }] },
+      { cat: 'Áudio', vars: [{ t: '{{audio}}', l: 'Áudio', ex: 'TrueHD' }, { t: '{{channels}}', l: 'Canais', ex: '7.1' }] },
+      { cat: 'Idiomas', vars: [{ t: '{{langs_upper}}', l: 'Código', ex: 'PT EN' }, { t: '{{langs_long}}', l: 'Nome', ex: 'Português' }, { t: '{{langs_lower}}', l: 'Minúsculo', ex: 'português' }, { t: '{{multi}}', l: 'MULTI' }] },
+      { cat: 'Fonte & Stats', vars: [{ t: '{{source}}', l: 'Fonte', ex: 'Fonte 1' }, { t: '{{seeds}}', l: 'Seeds', ex: '1240' }, { t: '{{size}}', l: 'Tamanho', ex: '58 GB' }, { t: '{{age}}', l: 'Idade', ex: '3d' }, { t: '{{cache}}', l: 'Cache ⚡' }, { t: '{{message}}', l: 'Mensagem' }, { t: '{{release_group}}', l: 'Grupo' }] },
+    ];
+
+    const PMETA = { quality: { icon: 'Qualidade', label: 'Qualidade', desc: 'Resolução → HDR → Encode → Codec' }, language: { icon: 'Idioma', label: 'Idioma', desc: 'Idioma preferido (PT > MULTI)' }, seeds: { icon: 'Seeds', label: 'Seeds', desc: 'Mais seeders = mais rápido' } };
+    const DLBLS = { none: 'Nenhum', realdebrid: 'Real-Debrid', alldebrid: 'AllDebrid', torbox: 'TorBox' };
+
+    /* ── SEÇÕES (ABAS) ── */
+    const TAB_KEYS = ['sources', 'filters', 'organize', 'builder'];
+    let currentTab = 'sources';
+    const tabBtns = [...document.querySelectorAll('.tab')];
+
+    tabBtns.forEach(b => b.addEventListener('click', () => goTab(b.dataset.tab, true)));
+
+    document.querySelector('.tabs').addEventListener('keydown', e => {
+      const i = TAB_KEYS.indexOf(currentTab);
+      let j = -1;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') j = (i + 1) % TAB_KEYS.length;
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') j = (i - 1 + TAB_KEYS.length) % TAB_KEYS.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = TAB_KEYS.length - 1;
+      if (j < 0) return;
+      e.preventDefault();
+      goTab(TAB_KEYS[j], true);
+      tabBtns[j].focus();
+    });
+
+    window.addEventListener('hashchange', () => {
+      const h = location.hash.slice(1);
+      if (TAB_KEYS.includes(h) && h !== currentTab) goTab(h);
+    });
+
+    function goTab(t, fromUser) {
+      if (!TAB_KEYS.includes(t)) t = 'sources';
+      currentTab = t;
+      tabBtns.forEach(b => {
+        const on = b.dataset.tab === t;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+      });
+      document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + t));
+      if (fromUser) {
+        try { history.replaceState(null, '', '#' + t); } catch (e) { }
+        if (window.scrollY > 0) window.scrollTo(0, 0);
+      }
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+
+    /* ── DEBRID ── */
+    function selectDebrid(s) {
+      state.debrid.service = s;
+      const sel = document.getElementById('debrid-service');
+      if (sel && sel.value !== s) sel.value = s;
+      document.querySelectorAll('.provider-card').forEach(c => {
+        c.classList.toggle('active', c.dataset.provider === s);
+      });
+      const w = document.getElementById('debrid-key-wrap');
+      if (w) w.style.display = s === 'none' ? 'none' : 'block';
+      if (s !== 'none') {
+        const dlabel = document.getElementById('dlabel');
+        if (dlabel) dlabel.textContent = DLBLS[s] || s;
+      }
+      const topDeb = document.getElementById('top-deb-pill');
+      if (topDeb) topDeb.textContent = DLBLS[s] || 'Nenhum';
+    }
+    function toggleKey() { const i = document.getElementById('debrid-api-key'); i.type = i.type === 'password' ? 'text' : 'password'; const eye = document.getElementById('eye-icon'); if (eye) eye.setAttribute('data-lucide', i.type === 'password' ? 'eye' : 'eye-off'); if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons(); }
+
+    /* ── MODE SELECTOR ── */
+    function toggleMode(m, isEnabled) {
+      const tw = document.getElementById('tw-' + m);
+      if (tw) tw.classList.toggle('active', isEnabled);
+      state.modes[m].enabled = isEnabled;
+      if (typeof syncPreview === 'function') syncPreview();
+      else if (typeof renderPreview === 'function') renderPreview();
+    }
+
+    /* ── SOURCES ── */
+    function guessName(u) { try { const h = new URL(u).hostname.replace(/^www\./, '').split('.')[0]; return h ? h.charAt(0).toUpperCase() + h.slice(1) : 'Fonte'; } catch { return 'Fonte'; } }
+    document.getElementById('src-url').addEventListener('input', function () { const ni = document.getElementById('src-name'); if (!ni.dataset.t) ni.placeholder = guessName(this.value) || 'Nome (auto)'; });
+    document.getElementById('src-name').addEventListener('input', function () { this.dataset.t = this.value ? '1' : ''; });
+    document.getElementById('src-add').addEventListener('click', addSrc);
+    document.getElementById('src-url').addEventListener('keydown', e => { if (e.key === 'Enter') addSrc(); });
+    function addSrc() {
+      const ui = document.getElementById('src-url'), ni = document.getElementById('src-name');
+      const url = ui.value.trim(), name = ni.value.trim() || guessName(url);
+      if (!url) { shake(ui); return; }
+      if (!/^https:\/\/[^\s/]+\.[^\s/]+/i.test(url)) { shake(ui); showToast('Use um link que comece com https://'); return; }
+      if (state.sources.find(s => s.url === url)) { showToast('Fonte já adicionada!'); return; }
+      if (state.sources.length >= 10) { showToast('Limite de 10 fontes por link.'); return; }
+      state.sources.push({ url, name });
+      ui.value = ''; ni.value = ''; delete ni.dataset.t; ni.placeholder = 'Nome (auto)';
+      renderSrc();
+    }
+    function removeSrc(i) { state.sources.splice(i, 1); renderSrc(); }
+    function renderSrc() {
+      const el = document.getElementById('src-list');
+      const count = state.sources.length;
+      document.getElementById('src-count').textContent = `${count} fonte${count !== 1 ? 's' : ''}`;
+      const topPill = document.getElementById('top-src-pill');
+      if (topPill) topPill.textContent = count;
+      el.innerHTML = count ? state.sources.map((s, i) => `<div class="sitem"><span class="sdot"></span><span class="sname">${esc(s.name)}</span><span class="surl">${esc(s.url)}</span><button class="btn btn-danger btn-sm" onclick="removeSrc(${i})" aria-label="Remover fonte"><i data-lucide="trash-2" class="icon-xs"></i></button></div>`).join('') : `<div class="empty"><span class="empty-i"><i data-lucide="inbox"></i></span>Nenhuma fonte adicionada.</div>`;
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+
+    /* ── GUARANTEES ── */
+    function toggleG(t, c) {
+      state.guarantees[t].enabled = c;
+      const gc = typeof document !== 'undefined' && document.getElementById('gc-' + t);
+      const gb = typeof document !== 'undefined' && document.getElementById('gb-' + t);
+      if (gc) gc.classList.toggle('enabled', c);
+      if (gb) { gb.classList.toggle('dis', !c); gb.inert = !c; }
+      if (typeof syncPreview === 'function') syncPreview();
+      else if (typeof renderPreview === 'function') renderPreview();
+    }
+
+    if (typeof document !== 'undefined') {
+      document.querySelectorAll('.tsel').forEach(sel => {
+        sel.querySelectorAll('.tc').forEach(chip => {
+          chip.addEventListener('click', () => {
+            sel.querySelectorAll('.tc').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const type = sel.id.replace('gts-', '');
+            const ci = document.getElementById('gtc-' + type);
+            const val = chip.dataset.val;
+            if (ci) ci.value = val;
+            if (type === 'auto') state.modes.auto.tag = val;
+            else state.guarantees[type].tag = val;
+            if (typeof syncPreview === 'function') syncPreview();
+            else if (typeof renderPreview === 'function') renderPreview();
+          });
+        });
+      });
+
+      ['quality', 'language', 'speed', 'auto'].forEach(t => {
+        document.getElementById('gtc-' + t)?.addEventListener('input', function () {
+          const val = this.value;
+          if (t === 'auto') state.modes.auto.tag = val;
+          else state.guarantees[t].tag = val;
+          const sel = document.getElementById('gts-' + t);
+          if (sel) {
+            sel.querySelectorAll('.tc').forEach(c => {
+              c.classList.toggle('active', c.dataset.val === val);
+            });
+          }
+          if (typeof syncPreview === 'function') syncPreview();
+          else if (typeof renderPreview === 'function') renderPreview();
+        });
+        document.getElementById('gbk-' + t)?.addEventListener('change', function () {
+          state.guarantees[t].backups = +this.value;
+          if (typeof syncPreview === 'function') syncPreview();
+          else if (typeof renderPreview === 'function') renderPreview();
+        });
+      });
+    }
+
+    function toggleOrig(wrap) {
+      const cb = document.getElementById('gtog-orig');
+      if (cb) {
+        cb.checked = !cb.checked;
+        state.includeOriginalLang = cb.checked;
+        if (wrap) wrap.classList.toggle('active', cb.checked);
+      }
+    }
+
+    /* ── PRIORITY ── */
+    let draggedPriIndex = null;
+    function renderPList() {
+      const plistEl = typeof document !== 'undefined' && document.getElementById('plist');
+      if (!plistEl) return;
+      plistEl.innerHTML = state.priority.map((k, i) => {
+        const m = PMETA[k];
+        return `<div class="pitem" draggable="true" data-key="${k}" data-index="${i}">
+          <span class="pdrag-handle" title="Arraste para reordenar"><i data-lucide="grip-vertical" class="icon-xs"></i></span>
+          <div class="prank">${i + 1}º</div>
+          <div style="flex:1">
+            <div class="plbl">${m.label}</div>
+            <div class="pdesc">${m.desc}</div>
+          </div>
+          <div class="parr">
+            <button onclick="movePri('${k}',-1)" ${i === 0 ? 'disabled' : ''} aria-label="Mover para cima" title="Subir"><i data-lucide="chevron-up" class="icon-xs"></i></button>
+            <button onclick="movePri('${k}',1)" ${i === state.priority.length - 1 ? 'disabled' : ''} aria-label="Mover para baixo" title="Descer"><i data-lucide="chevron-down" class="icon-xs"></i></button>
+          </div>
+        </div>`;
+      }).join('');
+      setupPriorityDnD();
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+
+    function movePri(k, d) {
+      const i = state.priority.indexOf(k), j = i + d;
+      if (j < 0 || j >= state.priority.length) return;
+      [state.priority[i], state.priority[j]] = [state.priority[j], state.priority[i]];
+      renderPList();
+      if (typeof updStats === 'function') updStats();
+      if (typeof syncPreview === 'function') syncPreview();
+      else if (typeof renderPreview === 'function') renderPreview();
+    }
+
+    function setupPriorityDnD() {
+      const plistEl = typeof document !== 'undefined' && document.getElementById('plist');
+      if (!plistEl) return;
+      const items = plistEl.querySelectorAll('.pitem');
+      items.forEach(item => {
+        item.addEventListener('dragstart', e => {
+          draggedPriIndex = Number(item.dataset.index);
+          item.classList.add('dragging');
+          if (e.dataTransfer) {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', String(draggedPriIndex));
+          }
+        });
+        item.addEventListener('dragover', ev => {
+          ev.preventDefault();
+          if (ev.dataTransfer) ev.dataTransfer.dropEffect = 'move';
+          item.classList.add('drag-over');
+        });
+        item.addEventListener('dragleave', () => {
+          item.classList.remove('drag-over');
+        });
+        item.addEventListener('drop', ev => {
+          ev.preventDefault();
+          item.classList.remove('drag-over');
+          const targetIndex = Number(item.dataset.index);
+          if (draggedPriIndex !== null && !isNaN(draggedPriIndex) && draggedPriIndex !== targetIndex) {
+            const movedItem = state.priority.splice(draggedPriIndex, 1)[0];
+            state.priority.splice(targetIndex, 0, movedItem);
+            renderPList();
+            if (typeof updStats === 'function') updStats();
+            if (typeof syncPreview === 'function') syncPreview();
+            else if (typeof renderPreview === 'function') renderPreview();
+          }
+        });
+        item.addEventListener('dragend', () => {
+          draggedPriIndex = null;
+          items.forEach(el => el.classList.remove('dragging', 'drag-over'));
+        });
+      });
+    }
+
+    /* ── FILTERS ── */
+    function toggleF(k, wrap) {
+      state.filters[k] = !state.filters[k];
+      const cb = wrap.querySelector('input[type=checkbox]');
+      if (cb) cb.checked = state.filters[k];
+      wrap.classList.toggle('active', state.filters[k]);
+      if (typeof syncPreview === 'function') syncPreview();
+      else if (typeof renderPreview === 'function') renderPreview();
+    }
+
+    if (typeof document !== 'undefined') {
+      document.getElementById('f-strict')?.addEventListener('change', function () { state.filters.strictLang = this.checked; });
+      document.getElementById('limit-mode')?.addEventListener('change', function () { state.limits.mode = this.value; });
+    }
+    state.filters.no3D = true;
+
+    /* ── SLIDERS ── */
+    function updSlider(inp, vid, fmt) {
+      const v = +inp.value;
+      const valEl = document.getElementById(vid);
+      if (valEl) valEl.textContent = fmt(v);
+      inp.style.setProperty('--pct', ((v - inp.min) / (inp.max - inp.min)) * 100 + '%');
+      if (inp.id === 'f-size') state.filters.maxSizeGB = v;
+      if (inp.id === 'f-seeds') state.filters.minSeeds = v;
+    }
+    if (typeof document !== 'undefined') {
+      document.querySelectorAll('input[type=range]').forEach(inp => inp.style.setProperty('--pct', ((inp.value - inp.min) / (inp.max - inp.min)) * 100 + '%'));
+
+      /* ── CHIPS ── */
+      document.getElementById('res-g')?.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; c.classList.toggle('active'); state.filters.resolutions = [...document.querySelectorAll('#res-g .chip.active')].map(x => x.dataset.val); });
+      document.getElementById('hdr-g')?.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; c.classList.toggle('active'); state.filters.hdr = [...document.querySelectorAll('#hdr-g .chip.active')].map(x => x.dataset.val); });
+      document.getElementById('codec-g')?.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; c.classList.toggle('active'); state.filters.codecs = [...document.querySelectorAll('#codec-g .chip.active')].map(x => x.dataset.val); });
+      document.getElementById('audio-codec-g')?.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; c.classList.toggle('active'); state.filters.audioCodecs = [...document.querySelectorAll('#audio-codec-g .chip.active')].map(x => x.dataset.val); });
+      document.getElementById('lang-g')?.addEventListener('click', e => { const c = e.target.closest('.chip'); if (!c) return; c.classList.toggle('active'); state.preferredLangs = state.filters.langs = [...document.querySelectorAll('#lang-g .chip.active')].map(x => x.dataset.val); });
+    }
+
+    /* ── PRESETS ── */
+    function applyPreset(k) {
+      if (!k || !PRESETS[k]) return;
+      const p = PRESETS[k];
+      state.template.line1 = p.l1;
+      state.template.line2 = p.l2;
+      const l1 = document.getElementById('tmpl-l1');
+      const l2 = document.getElementById('tmpl-l2');
+      if (l1) l1.value = p.l1;
+      if (l2) l2.value = p.l2;
+      syncPreview();
+      const pSel = document.getElementById('preset-sel');
+      if (pSel) pSel.value = '';
+    }
+
+    /* ── PALETTE & DRAG & DROP DE VARIÁVEIS ── */
+    function renderPalette() {
+      const vpltEl = typeof document !== 'undefined' && document.getElementById('vplt');
+      if (!vpltEl) return;
+      vpltEl.innerHTML = VPLT.map(cat => 
+        `<div class="vcat">
+          <div class="vcatttl">${cat.cat}</div>
+          <div class="vchips">
+            ${cat.vars.map(v => 
+              `<button type="button" class="vchip" draggable="true" 
+                       ondragstart="handleVarDragStart(event, '${v.t}')" 
+                       ondragend="handleVarDragEnd(event)" 
+                       onclick="insVar('${v.t}')" 
+                       title="${v.t}${v.ex ? ' → ' + v.ex : ''}">
+                <span class="vchip-drag-handle">⋮⋮</span>
+                <span>${v.l}</span>
+              </button>`
+            ).join('')}
+          </div>
+        </div>`
+      ).join('');
+    }
+
+    function handleVarDragStart(e, token) {
+      if (e.dataTransfer) {
+        e.dataTransfer.setData('text/plain', token);
+        e.dataTransfer.effectAllowed = 'copy';
+      }
+      if (e.target && e.target.classList) {
+        e.target.classList.add('is-dragging');
+      }
+    }
+
+    function handleVarDragEnd(e) {
+      if (e.target && e.target.classList) {
+        e.target.classList.remove('is-dragging');
+      }
+      document.querySelectorAll('.drop-target-active').forEach(el => el.classList.remove('drop-target-active'));
+    }
+
+    function handleDropOver(ev) {
+      ev.preventDefault();
+      if (ev.dataTransfer) ev.dataTransfer.dropEffect = 'copy';
+      if (ev.currentTarget && ev.currentTarget.classList) {
+        ev.currentTarget.classList.add('drop-target-active');
+      }
+    }
+
+    function handleDropLeave(ev) {
+      if (ev.currentTarget && ev.currentTarget.classList) {
+        ev.currentTarget.classList.remove('drop-target-active');
+      }
+    }
+
+    function handleDrop(ev, targetId) {
+      ev.preventDefault();
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      target.classList.remove('drop-target-active');
+
+      const token = ev.dataTransfer ? ev.dataTransfer.getData('text/plain') : '';
+      if (!token) return;
+
+      let pos = target.selectionStart;
+      if (typeof pos !== 'number' || pos < 0 || pos > target.value.length) {
+        pos = target.value.length;
+      }
+
+      const val = target.value;
+      const before = val.slice(0, pos);
+      const after = val.slice(pos);
+
+      const needSpace = before.length > 0 && !before.endsWith(' ') && !before.endsWith('\n') && !token.startsWith(' ');
+      const insertText = (needSpace ? ' ' : '') + token;
+
+      target.value = before + insertText + after;
+      const newPos = pos + insertText.length;
+      target.selectionStart = target.selectionEnd = newPos;
+      target.focus();
+
+      state.template[targetId === 'tmpl-l1' ? 'line1' : 'line2'] = target.value;
+      state.activeEditor = targetId;
+      syncPreview();
+    }
+
+    function insVar(t) {
+      const ta = document.getElementById(state.activeEditor);
+      if (!ta) return;
+      const s = ta.selectionStart, e = ta.selectionEnd;
+      ta.value = ta.value.slice(0, s) + t + ta.value.slice(e);
+      ta.selectionStart = ta.selectionEnd = s + t.length;
+      ta.focus();
+      state.template[ta.id === 'tmpl-l1' ? 'line1' : 'line2'] = ta.value;
+      syncPreview();
+    }
+
+    if (typeof document !== 'undefined') {
+      document.getElementById('tmpl-l1')?.addEventListener('focus', () => { state.activeEditor = 'tmpl-l1'; });
+      document.getElementById('tmpl-l2')?.addEventListener('focus', () => { state.activeEditor = 'tmpl-l2'; });
+      document.getElementById('tmpl-l1')?.addEventListener('input', function () { state.template.line1 = this.value; syncPreview(); });
+      document.getElementById('tmpl-l2')?.addEventListener('input', function () { state.template.line2 = this.value; syncPreview(); });
+    }
+
+    function resetTmpl() {
+      state.template.line1 = '{{resolution_full}}{{cache}}';
+      state.template.line2 = '{{quality}} | {{hdr}}\n{{audio}} {{channels}}\n({{seeds}}) | {{size}} | {{langs_upper}}';
+      const l1 = document.getElementById('tmpl-l1');
+      const l2 = document.getElementById('tmpl-l2');
+      if (l1) l1.value = state.template.line1;
+      if (l2) l2.value = state.template.line2;
+      syncPreview();
+    }
+
+    /* ── TEMPLATE RENDER ── */
+    function tmplRender(t, d) {
+      const v = { '{{title}}': d.cleanTitle || '', '{{year}}': d.year ? String(d.year) : '', '{{season}}': d.seasonStr || '', '{{episode}}': d.episodeStr || '', '{{resolution}}': d.resolution || '', '{{resolution_full}}': d.resolutionFull || '', '{{quality}}': d.quality || '', '{{quality_tag}}': d.qualityLabel || '', '{{codec}}': d.codec || '', '{{hdr}}': (d.hdr || []).join('+') || '', '{{hdr_top}}': d.topHdr || '', '{{edition}}': d.edition || '', '{{audio}}': (d.audioTags || []).join(' ') || '', '{{channels}}': d.channels || '', '{{langs_upper}}': (d.langCodes || []).join(' ') || (d.isMulti ? 'MULTI' : ''), '{{langs_long}}': (d.langNames || []).join(', ') || (d.isMulti ? 'Multi' : ''), '{{langs_lower}}': (d.langLower || []).join(', ') || (d.isMulti ? 'multi' : ''), '{{multi}}': d.isMulti ? 'MULTI' : '', '{{source}}': d.source || '', '{{seeds}}': String(d.seeds || 0), '{{size}}': d.sizeStr || '', '{{age}}': d.age || '', '{{cache}}': d.isCached ? '⚡' : '', '{{message}}': d.message || '', '{{release_group}}': '', '{{raw_title}}': '', '{{raw_description}}': '' };
+      let o = t;
+      for (const [k, val] of Object.entries(v)) {
+        if (!val) {
+          const esc = k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const re = new RegExp(`(?:(?:[\\p{Emoji_Presentation}\\p{Extended_Pictographic}]|[A-Za-zÀ-ÿ]+:)\\s*)?${esc}`, 'gu');
+          o = o.replace(re, '');
+        } else {
+          o = o.split(k).join(val);
+        }
+      }
+      o = o.replace(/\{\{[^}]+\}\}/g, '').replace(/\[\s*\]/g, '').replace(/\(\s*\)/g, '').replace(/ {2,}/g, ' ').replace(/\|\s*\|/g, '|').replace(/^\s*\|\s*/gm, '').replace(/\s*\|\s*$/gm, '');
+      return o.split('\n').map(l => l.trim()).filter(l => l.length > 0).join('\n').trim();
+    }
+
+    /* ── PREVIEW ── */
+    function renderPreview() {
+      const simEl = typeof document !== 'undefined' && document.getElementById('pvsim');
+      const sim = simEl ? simEl.value : 'auto';
+      const el = typeof document !== 'undefined' && document.getElementById('pvstreams');
+      if (!el) return;
+      el.innerHTML = MOCK.map((m, i) => {
+        let tag = '';
+        if (i === 0 && sim === 'auto') tag = state.modes.auto.tag || '🤖';
+        if (i === 0 && sim === 'quality') tag = state.guarantees.quality.tag || '💎';
+        if (i === 1 && sim === 'language') tag = state.guarantees.language.tag || '📌';
+        if (i === 0 && sim === 'speed') tag = state.guarantees.speed.tag || '🔥';
+        let l1 = tmplRender(state.template.line1, m);
+        const l2 = tmplRender(state.template.line2, m);
+
+        let pvl1Html = '—';
+        if (l1 || tag) {
+          pvl1Html = '';
+          if (tag) pvl1Html += `<span class="pv-badge">${esc(tag)}</span> `;
+          if (l1) pvl1Html += `<span class="pv-rest">${esc(l1)}</span>`;
+        }
+
+        return `<div class="pvs ${i === 0 ? 'act' : ''}">
+      <div class="pvs-content">
+        <div class="pvl1">${pvl1Html}</div>
+        <div class="pvl2">${esc(l2) || '—'}</div>
+      </div>
+      <div class="pvs-play">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>`;
+      }).join('');
+    }
+
+    const syncPreview = renderPreview;
+
+    /* ── INSTALL ── */
+    function updStats() {
+      document.getElementById('st-src').textContent = state.sources.length;
+      document.getElementById('st-deb').textContent = DLBLS[state.debrid.service] || 'Nenhum';
+      document.getElementById('st-gar').textContent = Object.values(state.guarantees).filter(g => g.enabled).length + (state.includeOriginalLang ? 1 : 0);
+      document.getElementById('st-pri').textContent = state.priority.map(k => PMETA[k].icon).join(' > ');
+      const r = state.filters.resolutions; document.getElementById('st-res').textContent = r.length ? r.join(', ') : 'Todas';
+      document.getElementById('st-lim').textContent = state.limits.mode === 'auto' ? 'Auto' : `${state.limits.mode}/res`;
+    }
+
+    function toB64u(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, ''); }
+
+    function genConfig() {
+      const cfg = { sources: state.sources, debrid: state.debrid, modes: state.modes, guarantees: state.guarantees, includeOriginalLang: state.includeOriginalLang, priority: state.priority, limits: state.limits, filters: state.filters, preferredLangs: state.preferredLangs, template: state.template };
+      const enc = toB64u(JSON.stringify(cfg));
+      const base = window.location.origin;
+      document.getElementById('res-web').textContent = `${base}/${enc}/manifest.json`;
+      document.getElementById('res-str').textContent = `stremio://${window.location.host}/${enc}/manifest.json`;
+      
+      const resSec = document.getElementById('result-sec');
+      if (resSec) resSec.style.display = 'block';
+      const resPh = document.getElementById('result-placeholder');
+      if (resPh) resPh.style.display = 'none';
+
+      const btn = document.getElementById('gen-btn');
+      btn.innerHTML = '<i data-lucide="check-circle-2" class="icon-btn"></i> Gerado com Sucesso!';
+      btn.style.background = '#ffffff';
+      btn.style.color = '#000000';
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+      showToast('Link Mestre gerado com sucesso!');
+      setTimeout(() => {
+        btn.innerHTML = '<i data-lucide="zap" class="icon-btn"></i> Gerar Link Mestre';
+        btn.style.background = '';
+        btn.style.color = '';
+        if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+      }, 2500);
+    }
+
+    function cpUrl(id) {
+      const el = document.getElementById(id);
+      const text = el ? el.textContent : '';
+      const onDone = () => {
+        showToast('Link copiado com sucesso!');
+        const btn = document.getElementById('btn-copy-link');
+        if (btn) {
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<i data-lucide="check" class="icon-btn"></i> <span>Link Copiado!</span>';
+          btn.classList.add('btn-copied');
+          if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.classList.remove('btn-copied');
+            if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+          }, 2000);
+        }
+      };
+      if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onDone).catch(onDone);
+      } else {
+        onDone();
+      }
+    }
+    function openStremio() { const u = document.getElementById('res-str').textContent; if (u && u !== '—') window.open(u, '_blank'); }
+
+    /* ── UTILS ── */
+    function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function shake(el) { el.style.animation = 'shake .4s ease'; el.addEventListener('animationend', () => el.style.animation = '', { once: true }); }
+    function showToast(m) { const t = document.getElementById('toast'); t.innerHTML = '<i data-lucide="check" class="icon-sm"></i> ' + m; t.classList.add('show'); if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons(); setTimeout(() => t.classList.remove('show'), 2200); }
+    const ss = document.createElement('style'); ss.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}'; document.head.appendChild(ss);
+
+    /* ── INIT ── */
+    selectDebrid('none');
+    renderPList();
+    renderPalette();
+    renderPreview();
+    renderSrc();
+    updStats();
+    goTab(TAB_KEYS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'sources');
+    // Inicializar sliders com valores do state
+    const sSize = document.getElementById('f-size');
+    sSize.value = state.filters.maxSizeGB;
+    updSlider(sSize, 'sv-size', v => v == 0 ? 'Sem limite' : v + 'GB');
+
+    const sSeeds = document.getElementById('f-seeds');
+    sSeeds.value = state.filters.minSeeds;
+    updSlider(sSeeds, 'sv-seeds', v => v);
+    if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+
+  </script>
+
+  <script>
+    /* ── Interface: resumo, avisos e atalhos (só leem o estado; não alteram a configuração) ── */
+    (function () {
+      const rail = document.getElementById('rail');
+      const panels = document.getElementById('panels');
+      const warn = document.getElementById('mode-warning');
+      const dock = document.getElementById('dock');
+      const genBtn = document.getElementById('gen-btn');
+      let generated = false, stale = false;
+
+      function syncPressed() {
+        document.querySelectorAll('.chip, .tc, .qty-btn, .provider-card').forEach(el => {
+          el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+        });
+      }
+
+      function refresh() {
+        updStats();
+        syncPressed();
+        warn.hidden = !!(state.modes.auto.enabled || state.modes.manual.enabled);
+        rail.classList.toggle('is-generated', generated && !stale);
+        rail.classList.toggle('is-stale', generated && stale);
+      }
+
+      ['click', 'input', 'change', 'drop', 'keydown'].forEach(type => {
+        document.addEventListener(type, e => {
+          if (type === 'keydown' && e.key !== 'Enter') return;
+          const t = e.target;
+          if (!t || !t.closest) return;
+          if (t.closest('#gen-btn')) {
+            generated = true; stale = false;
+            setTimeout(() => {
+              const r = document.getElementById('result-sec');
+              if (r) r.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 80);
+          } else if (generated && panels.contains(t) && t.closest('button, input, select, textarea, .tw')) {
+            stale = true;
+          }
+          setTimeout(refresh, 0);
+        }, true);
+      });
+
+      if (dock && 'IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+          entries.forEach(en => dock.classList.toggle('is-hidden', en.isIntersecting));
+        }, { threshold: 0.6 }).observe(genBtn);
+      }
+      const dockBtn = document.getElementById('dock-btn');
+      if (dockBtn) dockBtn.addEventListener('click', () => {
+        const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        rail.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+      });
+
+      refresh();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var dlg = document.getElementById('kofi-dialog'), fr = document.getElementById('kofiframe');
+      document.getElementById('kofi-open').addEventListener('click', function () {
+        if (!fr.src) fr.src = fr.dataset.src;
+        dlg.showModal();
+      });
+      var sup = document.getElementById('support'), card = document.getElementById('support-card'),
+          tog = document.getElementById('support-toggle'), lp = document.getElementById('livepix-frame');
+      function setSupport(open) {
+        card.hidden = !open; tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open && !lp.src) lp.src = lp.dataset.src;
+      }
+      tog.addEventListener('click', function () { setSupport(card.hidden); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !card.hidden && !dlg.open) { setSupport(false); tog.focus(); } });
+      document.getElementById('kofi-close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+      /* alinha o fim da barra superior com o conteúdo da coluna lateral (descontando a rolagem dela) */
+      var rail = document.getElementById('rail'), shell = document.querySelector('.shell');
+      function sync() {
+        var root = document.documentElement.style;
+        if (getComputedStyle(rail).position !== 'sticky') { root.removeProperty('--page-pad-r'); return; }
+        var rs = getComputedStyle(rail), sb = Math.max(0, rail.offsetWidth - rail.clientWidth - parseFloat(rs.borderLeftWidth));
+        root.setProperty('--page-pad-r', (parseFloat(getComputedStyle(shell).paddingRight) + parseFloat(rs.paddingRight) + sb) + 'px');
+      }
+      sync(); window.addEventListener('resize', sync); window.addEventListener('load', sync);
+      fetch('/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
+        var v = document.getElementById('app-ver');
+        if (m && m.version && v) { v.textContent = 'v' + m.version; v.hidden = false; }
+      }).catch(function () {});
+    })();
+  </script>
+</body>
+
+</html>
